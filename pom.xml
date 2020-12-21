@@ -84,8 +84,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.4.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
+                    <mainClass>ru.alexandravg.MainClass</mainClass>
                 </configuration>
             </plugin>
             <plugin>
