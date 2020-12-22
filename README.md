@@ -1,5 +1,5 @@
 # S7_test
-To run project -> download .jar file and run with "java -jar ./s7_test-1.0-SNAPSHOT"
+To run project -> download .jar file from link and run with "java -jar ./s7_test-1.0-SNAPSHOT"
 
 Here are some info about project:
 
