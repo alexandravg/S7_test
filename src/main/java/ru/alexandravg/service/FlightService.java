@@ -44,6 +44,9 @@ public class FlightService {
     }
 
     public boolean registerPassenger(PassengerDTO passengerDTO) {
+        if(passengerRepository.findById(passengerDTO.getName()).isPresent()){
+            return false;
+        }
         FlightEntity flightEntity = flightRepository.findAll().get(0);
         if (passengerDTO.getFlightClass().equalsIgnoreCase("business")) {
             if (flightEntity.getBusinessClassTaken() < flightEntity.getBusinessClass()) {
