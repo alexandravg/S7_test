@@ -18,20 +18,25 @@ public class FlightController {
 
     @GetMapping(value = "/{flightClass}", produces = "application/json")
     public ResponseEntity getFlightClassInfo(@PathVariable String flightClass) {
-        log.info("NEW REQUEST");
+        log.info("New GET request for " + flightClass);
         return new ResponseEntity<>(flightService.getFlightClassInfo(flightClass), HttpStatus.OK);
     }
 
     @PostMapping(value = "/register", consumes = "application/json")
     public HttpStatus registerPassenger(@RequestBody PassengerDTO passengerDTO) {
-        if (flightService.registerPassenger(passengerDTO)) {
-            return HttpStatus.OK;
+        if (passengerDTO != null) {
+            log.info("New POST request for " + passengerDTO.getName());
+            if (flightService.registerPassenger(passengerDTO)) {
+                return HttpStatus.OK;
+            }
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
     @GetMapping(value = "/info", produces = "application/json")
-    public ResponseEntity getFlightInfo(){
+    public ResponseEntity getFlightInfo() {
+        log.info("New GET request for info");
         return new ResponseEntity(flightService.getFlightInfo(), HttpStatus.OK);
     }
 
